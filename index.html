@@ -2,17 +2,435 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initialization">
+        <meta name="viewport" content="width=device-width">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Contact us</title>
-        
-        <link rel="stylesheet" href="style1.css" type="text/css">
+        <title>Confession Website!!</title>
+        <link class="website-icon" rel="website icon" href="heart-logo.jpg" type="image/x-icon">
     </head>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    
+
+
+
+
+
+    <style>
+      [data-tooltip] {
+        position: relative;
+        cursor: pointer;
+      }
+      [data-tooltip]::before,
+      [data-tooltip]::after {
+        text-transform: none;
+        font-size: .9em;
+        line-height: 1;
+        position: absolute;
+        display: none;
+        opacity: 0;
+        filter: drop-shadow(3px 0px 0px #740000);
+      }
+      [data-tooltip]::before {
+        content: '';
+        border: 6px solid transparent;
+        z-index: 101;
+      }
+      [data-tooltip]::after {
+        content: attr(data-tooltip);
+        text-align: center;
+        min-width: 3em;
+        max-width: 21em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 11px 18px;
+        border-radius: 25px;
+        background: #F35E5E;
+        color: #FFFFFF;
+        z-index: 100;
+        text-shadow: 1px 4px 3px #A0E0FF;
+      }
+      [data-tooltip]:hover::before,
+      [data-tooltip]:hover::after {
+        display: block;
+      }
+      [data-tooltip='']::before,
+      [data-tooltip='']::after {
+        display: none !important;
+      }
+      [data-tooltip]:not([data-flow])::before,
+      [data-tooltip][data-flow^="top"]::before {
+        bottom: 100%;
+        border-bottom-width: 0;
+        border-top-color: #F35E5E;
+      }
+      [data-tooltip]:not([data-flow])::after,
+      [data-tooltip][data-flow^="top"]::after {
+        bottom: calc(100% + 5px);
+      }
+      [data-tooltip]:not([data-flow])::before,
+      [data-tooltip]:not([data-flow])::after,
+      [data-tooltip][data-flow^="top"]::before,
+      [data-tooltip][data-flow^="top"]::after {
+        left: 50%;
+        transform: translate(-50%, -.4em);
+      }
+      [data-tooltip][data-flow^="bottom"]::before {
+        top: 100%;
+        border-top-width: 0;
+        border-bottom-color: #F35E5E;
+      }
+      [data-tooltip][data-flow^="bottom"]::after {
+        top: calc(100% + 5px);
+      }
+      [data-tooltip][data-flow^="bottom"]::before,
+      [data-tooltip][data-flow^="bottom"]::after {
+        left: 50%;
+        transform: translate(-50%, .4em);
+      }
+      [data-tooltip][data-flow^="left"]::before {
+        top: 50%;
+        border-right-width: 0;
+        border-left-color: #F35E5E;
+        left: calc(0em - 5px);
+        transform: translate(-.5em, -50%);
+      }
+      [data-tooltip][data-flow^="left"]::after {
+        top: 50%;
+        right: calc(100% + 5px);
+        transform: translate(-.4em, -50%);
+      }
+      [data-tooltip][data-flow^="right"]::before {
+        top: 50%;
+        border-left-width: 0;
+        border-right-color: #F35E5E;
+        right: calc(0em - 7px);
+        transform: translate(.4em, -50%);
+      }
+      [data-tooltip][data-flow^="right"]::after {
+        top: 50%;
+        left: calc(100% + 5px);
+        transform: translate(.5em, -50%);
+      }
+      @keyframes tooltip-vert {
+        to {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+      @keyframes tooltip-horz {
+        to {
+          opacity: 1;
+          transform: translate(0, -50%);
+        }
+      }
+      [data-tooltip]:not([data-flow]):hover::before,
+      [data-tooltip]:not([data-flow]):hover::after,
+      [data-tooltip][data-flow^="top"]:hover::before,
+      [data-tooltip][data-flow^="top"]:hover::after,
+      [data-tooltip][data-flow^="bottom"]:hover::before,
+      [data-tooltip][data-flow^="bottom"]:hover::after {
+        animation: tooltip-vert .5s ease-out forwards;
+      }
+      [data-tooltip][data-flow^="left"]:hover::before,
+      [data-tooltip][data-flow^="left"]:hover::after,
+      [data-tooltip][data-flow^="right"]:hover::before,
+      [data-tooltip][data-flow^="right"]:hover::after {
+        animation: tooltip-horz .5s ease-out forwards;
+      }
+      
+
+
+
+
+
+      svg {
+        font-family: "Permanent Marker", sans-serif;
+        width: 100%; height: 10%;
+      }
+      svg text {
+        animation: stroke 10s infinite alternate;
+        stroke-width: 2;
+        stroke: #14EAFF;
+        font-size: 30px;
+      }
+      @keyframes stroke {
+        0%   {
+          fill: rgba(41,255,172,0); stroke: rgba(20,234,255,1);
+          stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+        }
+        70%  {fill: rgba(41,255,172,0); stroke: rgba(20,234,255,1); }
+        80%  {fill: rgba(41,255,172,0); stroke: rgba(20,234,255,1); stroke-width: 3; }
+        100% {
+          fill: rgba(41,255,172,1); stroke: rgba(20,234,255,0);
+          stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+        }
+      }
+      
+      .wrapper {
+        border: none;
+        width: 100%;
+        height: 10%;
+        background-color: #FFFFFF
+      };
+
+
+      .glitch-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: white;
+     }
+     
+     .glitch {
+        position: relative;
+        font-size: 20px;
+        font-weight: bold;
+        color: #1f23ff;
+        letter-spacing: 3px;
+        z-index: 1;
+     }
+     
+     .glitch:before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: -2px;
+        width: 100%;
+        color: 30px;
+        background-color: none;
+        overflow: hidden;
+        clip: rect(0, 900px, 0, 0);
+        animation: noise-before 1s infinite linear alternate-reverse;
+     }
+     
+     .glitch:after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 2px;
+        width: 100%;
+        color: 30px;
+        background-color: none;
+        overflow: hidden;
+        clip: rect(0, 900px, 0, 0);
+        animation: noise-after 1s infinite linear alternate-reverse;
+     }
+     
+     @keyframes noise-before {
+        0% {
+           clip: rect(61px, 9999px, 52px, 0);
+        }
+        5% {
+           clip: rect(33px, 9999px, 144px, 0);
+        }
+        10% {
+           clip: rect(121px, 9999px, 115px, 0);
+        }
+        15% {
+           clip: rect(144px, 9999px, 162px, 0);
+        }
+        20% {
+           clip: rect(62px, 9999px, 180px, 0);
+        }
+        25% {
+           clip: rect(34px, 9999px, 42px, 0);
+        }
+        30% {
+           clip: rect(147px, 9999px, 179px, 0);
+        }
+        35% {
+           clip: rect(99px, 9999px, 63px, 0);
+        }
+        40% {
+           clip: rect(188px, 9999px, 122px, 0);
+        }
+        45% {
+           clip: rect(154px, 9999px, 14px, 0);
+        }
+        50% {
+           clip: rect(63px, 9999px, 37px, 0);
+        }
+        55% {
+           clip: rect(161px, 9999px, 147px, 0);
+        }
+        60% {
+           clip: rect(109px, 9999px, 175px, 0);
+        }
+        65% {
+           clip: rect(157px, 9999px, 88px, 0);
+        }
+        70% {
+           clip: rect(173px, 9999px, 131px, 0);
+        }
+        75% {
+           clip: rect(62px, 9999px, 70px, 0);
+        }
+        80% {
+           clip: rect(24px, 9999px, 153px, 0);
+        }
+        85% {
+           clip: rect(138px, 9999px, 40px, 0);
+        }
+        90% {
+           clip: rect(79px, 9999px, 136px, 0);
+        }
+        95% {
+           clip: rect(25px, 9999px, 34px, 0);
+        }
+        100% {
+           clip: rect(173px, 9999px, 166px, 0);
+        }
+     }
+     
+     @keyframes noise-after {
+        0% {
+           clip: rect(26px, 9999px, 33px, 0);
+        }
+        5% {
+           clip: rect(140px, 9999px, 198px, 0);
+        }
+        10% {
+           clip: rect(184px, 9999px, 89px, 0);
+        }
+        15% {
+           clip: rect(121px, 9999px, 6px, 0);
+        }
+        20% {
+           clip: rect(181px, 9999px, 99px, 0);
+        }
+        25% {
+           clip: rect(154px, 9999px, 133px, 0);
+        }
+        30% {
+           clip: rect(134px, 9999px, 169px, 0);
+        }
+        35% {
+           clip: rect(26px, 9999px, 187px, 0);
+        }
+        40% {
+           clip: rect(147px, 9999px, 137px, 0);
+        }
+        45% {
+           clip: rect(31px, 9999px, 52px, 0);
+        }
+        50% {
+           clip: rect(191px, 9999px, 109px, 0);
+        }
+        55% {
+           clip: rect(74px, 9999px, 54px, 0);
+        }
+        60% {
+           clip: rect(145px, 9999px, 75px, 0);
+        }
+        65% {
+           clip: rect(153px, 9999px, 198px, 0);
+        }
+        70% {
+           clip: rect(99px, 9999px, 136px, 0);
+        }
+        75% {
+           clip: rect(118px, 9999px, 192px, 0);
+        }
+        80% {
+           clip: rect(1px, 9999px, 83px, 0);
+        }
+        85% {
+           clip: rect(145px, 9999px, 98px, 0);
+        }
+        90% {
+           clip: rect(121px, 9999px, 154px, 0);
+        }
+        95% {
+           clip: rect(156px, 9999px, 44px, 0);
+        }
+        100% {
+           clip: rect(67px, 9999px, 122px, 0);
+        }
+     }
+     
+      
+
+
+
+
+
+
+.text-0112 {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+        /* Style the form container */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Style form input fields */
+  .input1,
+  .input2,
+  .input3,
+  .msg1 {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+  }
+  
+  /* Style the submit button */
+  #button1 {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 136, 0);
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Style the select dropdown */
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style the honeypot field */
+  input[name="_honey"] {
+    display: none;
+  }
+ 
+    </style>
+
 <body>
-<p class="1">Contact Us:</p>
     
-    
-<form action="https://formsubmit.co/storytime.2023designated@gmail.com" method="POST">
+  <div class="wrapper">
+    <svg>
+      <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+        GMAIL Confession!
+      </text>
+    </svg>
+  </div>
+  
+
+
+
+    <div class="form-container">
+<p class="text-0112">Welcome To Abraham Bayland's Gmail Confession!!</p>
+<form action="https://formsubmit.co/e6568906df6f34488e8f8c6dd31eec7c" method="POST">
     
     
     <!--Honeypot-->
@@ -20,18 +438,99 @@
     
     <!--Disable Captcha-->
 <input type="hidden" name="_captcha" value="false">
+
     
     
-<input type="text" class="input1" placeholder="Full Name" name="name">
-<input type="email" class="input2" placeholder="Your Email" name="email">
-<input type="number" class="input3" placeholder="Contact No." name="number">
+<input data-tooltip="Enter any type of username!" data-flow="bottom"  type="text" class="input1" placeholder="Username" name="Userame">
 <br>
-<textarea class="msg1" id="comments" cols="30" rows="5" placeholder="Type Here.." height="500px" width="100%" name="message"></textarea>
+<select id="countrySelect" name="Country"  data-tooltip="Select your country if you like!" data-flow="bottom" >
+    <option disabled selected>Select Your Country</option>
+    <option>Africa</option>
+    <option>Dubai</option>
+    <option>Europe</option>
+    <option>France</option>
+    <option>Indonesia</option>
+    <option>Italy</option>
+    <option>Philippines</option>
+    <option>Russia</option>
+    <option>United States (US)</option>
+    <option>United Kingdom (UK)</option>
+    <option>Other Country</option>
+</select>
 <br>
-<br><br>
-<br><br>
-<button type="submit" id="button1" onclick="submit1()">Submit</button>
+<textarea data-tooltip="Type your message!" data-flow="bottom" class="msg1" id="comments" cols="30" rows="5" placeholder="Type Here.." height="500px" width="100%" name="Message"></textarea>
+<br>
+<button data-tooltip="Submit!" data-flow="bottom"  type="submit" id="button1" onclick="submit1()">
+  <div class="glitch-wrapper">
+  <div class="glitch" data-text="Send">Send</div>
+</div>
+</button>
+
+<!--User's location if allowed from the web browser-->
+<input type="hidden" name="Location" id="location">
+
+
 </form>
-<script src="main1.js"></script>
+
+<br>
+
+<!--Creator's Profile Info (Facebook Custom Link)-->
+Creator: <a data-tooltip="Visit The Creator's Profile Info!" data-flow="bottom" href="https://account.beauty/profile.php?id=868JLA.php" style="text-decoration: none; color:red;">Abraham Bayland</a>
+
+</div>
+<script>
+  window.onload = function () {
+    getLocation();
+    showPosition(position);
+};
+
+const locate = document.getElementById("location");
+
+
+
+
+function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+  
+  function showPosition(position) {
+
+    console.log("Latitude: " + position.coords.latitude + 
+    "\nLongitude: " + position.coords.longitude);
+  
+    locate.value = "Latitude:" +position.coords.latitude +  ", Longitude:" +position.coords.longitude;
+
+
+
+    var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+
+  // Using third-party API to get country from coordinates
+  fetch(`https://geocode.xyz/${latitude},${longitude}?json=1`)
+    .then(response => response.json())
+    .then(data => {
+      var country = data.country;
+      var countrySelect = document.getElementById("countrySelect");
+      var options = countrySelect.options;
+      
+      // Find option with country name
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].textContent === country) {
+          options[i].selected = true;
+          break; // Exit loop once option is selected
+        }
+      }
+
+    })
+    .catch(error => console.error("Error fetching location data:", error));
+  }
+
+  
+</script>
 </body>
 </html>
+
